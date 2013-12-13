@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @garage.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @garage.address %>
+</p>
+
+<p>
+  <b>Full:</b>
+  <%= @garage.full %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @garage.phone %>
+</p>
+
+<p>
+  <b>Manage Name:</b>
+  <%= @garage.manageName %>
+</p>
+
+<p>
+	<b>Employees employeed in the Garage: </b> <br \>
+	<%= "Name           Role"%>
+	<br \>
+	<% @garage.employees.each do |m| %>
+		<%= m.name %>
+		<%= m.role %>
+		<br \>
+	<% end %>
+</p> 
+
+<p>
+	<b>Cars in the Garage: </b> <br \>
+	<%= "Photo          Make        Model"%>
+	<br \>
+	<% @garage.cars.each do |m| %>
+		<br \>
+		<%= image_tag(m.photo, :size => "100x100") %>
+		<%= m.make %>
+		<%= m.model %>
+		<br \>
+	<% end %>
+</p> 
+
+<%= link_to 'Edit', edit_garage_path(@garage) %> |
+<%= link_to 'Back', garages_path %>

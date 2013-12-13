@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  make: MyString
+  model: MyString
+  age: 1
+  seg: MyString
+  color: MyString
+  type: 
+  garage_id: 1
+
+two:
+  make: MyString
+  model: MyString
+  age: 1
+  seg: MyString
+  color: MyString
+  type: 
+  garage_id: 1

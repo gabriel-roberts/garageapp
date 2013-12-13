@@ -1,0 +1,34 @@
+<h1>Listing cars</h1>
+
+<table>
+<% @cars.each do |car| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+	<td>
+		<%= image_tag(car.photo, class: 'list_image') %>
+	</td>
+	<td class="list_description">
+		<dl>
+			<dt>Car Make: <%= car.make %></dt>
+			<dt>Car Model: <%= car.model %></dt>
+			<dt>Version: <%= car.version %></dt>
+			<dt>Price Per Day: <%= car.price%></dt>
+			<dt>Location: <%= car.garage.name %></dt>
+		</dl>
+	</td>
+		
+	<% if session[:employee_id] %>
+	<td class="list_actions">
+    <%= link_to 'Show', car %>
+    <%= link_to 'Edit', edit_car_path(car) %>
+    <%= link_to 'Destroy', car, confirm: 'Are you sure?', method: :delete %>
+	</td>
+	<% end %>
+	
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if session[:employee_id] %>
+<%= link_to 'Add a Car', new_car_path %>
+<% end %>

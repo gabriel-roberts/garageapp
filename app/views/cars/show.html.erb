@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <%=image_tag(@car.photo, :size => "100x100") %>
+</p>
+
+<br />
+
+<p>
+  <b>Make:</b>
+  <%= @car.make %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%= @car.model %>
+</p>
+<p>
+  <b>Price Per Day:</b>
+  <%= @car.price %>
+</p>
+<p>
+  <b>Age:</b>
+  <%= @car.age %>
+</p>
+
+<p>
+  <b>Registration:</b>
+  <%= @car.Reg %>
+</p>
+
+<p>
+  <b>Color:</b>
+  <%= @car.color %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%= @car.version %>
+</p>
+
+<p>
+  <b>Garage:</b>
+  <%= @car.garage.name %>
+</p>
+
+<p>
+	<b>List or the Car's Renters and Costs: </b> <br \>
+	<%= "Name   Rental Cost"%>
+	<br \>
+	<% @car.rentals.each do |m| %>
+		<%= m.customer.name %>
+		<%= m.cost %>
+		<br \>
+	<% end %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>

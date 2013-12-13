@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @customer.email %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @customer.dob %>
+</p>
+
+<p>
+  <b>Insurance type:</b>
+  <%= @customer.insurance_type %>
+</p>
+
+<p>
+  <b>Full licance:</b>
+  <%= @customer.full_licance %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @customer.phone %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @customer.address %>
+</p>
+
+<p>
+  <b>Ppsn:</b>
+  <%= @customer.PPSN %>
+</p>
+
+<p>
+	<b>List or the Customer's rentals and Costs: </b> <br \>
+	<%= "Reg                 cost"%>
+	<br \>
+	<% @customer.rentals.each do |m| %>
+		<%= m.car %>
+		<%= m.cost %>
+		<br \>
+	<% end %>
+</p>
+
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>

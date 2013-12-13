@@ -1,0 +1,26 @@
+<h1>Listing customers</h1>
+
+<table>
+<% @customers.each do |customer| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+		<td class="list_description">
+			<dl>
+				<dt>Customer Name: <%= customer.name %></dt>
+				<dt>Customer E-Mail: <%= customer.email %></dt>
+				<dt>Customer Age: <%= customer.dob %></dt>
+				<dt>Customer Insurance: <%= customer.insurance_type %></dt>
+				<dt>Customer Phone Number: <%= customer.phone %></dt>
+			</dl>
+		</td>
+		<td class="list_actions">
+			<%= link_to 'Show', customer %>
+			<%= link_to 'Edit', edit_customer_path(customer) %>
+			<%= link_to 'Destroy', customer, confirm: 'Are you sure?', method: :delete %>
+		</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Customer', new_customer_path %>

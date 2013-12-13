@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start date:</b>
+  <%= @rental.startDate %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @rental.endDate %>
+</p>
+
+<p>
+  <b>Length Of Rental:</b>
+  <%= @rental.lengthOfRental %>
+</p>
+
+<p>
+  <b>Cost of Rental:</b>
+  <%= euro(@rental.costOfRental) %>
+</p>
+
+<p>
+  <b>Paid:</b>
+  <%= euro(@rental.paid)%>
+</p>
+
+<p>
+  <b>Balance Due:</b>
+  <%= euro(ammountDue(@rental.costOfRental , @rental.paid)) %>
+</p>
+
+<p>
+  <b>Car:</b>
+  <%= @rental.car.Reg %>
+</p>
+
+<p>
+  <b>Customer:</b>
+  <%= @rental.customer.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_rental_path(@rental) %> |
+<%= link_to 'Back', rentals_path %>

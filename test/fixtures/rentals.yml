@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  startDate: 2013-10-09
+  endDate: 2013-10-09
+  cost: 1
+  paid: 1
+  car_id: 1
+  customer_id: 1
+
+two:
+  startDate: 2013-10-09
+  endDate: 2013-10-09
+  cost: 1
+  paid: 1
+  car_id: 1
+  customer_id: 1

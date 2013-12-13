@@ -1,0 +1,25 @@
+<h1>Listing rentals</h1>
+
+<table>
+<% @rentals.each do |rental| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+		<td class="list_description">
+			<dl>
+				<dt>Customer Name: <%= rental.customer.name %></dt>
+				<dt>Car Reg: <%= rental.car.Reg%></dt>
+				<dt>Rentals End: <%= rental.endDate %></dt>
+				<dt>Rental Cost: <%= euro(rental.costOfRental) %></dt>
+			</dl>
+		</td>
+		<td class="list_actions">
+			<%= link_to 'Show', rental %>
+			<%= link_to 'Edit', edit_rental_path(rental) %>
+			<%= link_to 'Destroy', rental, confirm: 'Are you sure?', method: :delete %>
+		</td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rental', new_rental_path %>

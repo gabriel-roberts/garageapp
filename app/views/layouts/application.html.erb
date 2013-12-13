@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Garageapp</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class='<%= controller.controller_name %>'>
+	<body id="content">
+		<div id="banner">
+			<%= image_tag("carRentals.jpg", :size => "100x50") %>
+			<%= @page_title || "Car rentals by Gabriel Roberts" %>
+		</div>
+		<div id="middle">
+		<%= image_tag("carMiddle.jpg", :size => "650x200") %>
+		</div>
+			<div id="columns">
+				<div id="side">
+					<ul>
+						<% if !signed_in? %>
+							<li><a href="http://localhost:3000/login" id="goTo">Employee Sign in</a></li>		
+						<% else %>
+							<li><h2 colour="gold">Signed in as <%= @current_employee.name %></h1></li>
+							<li><%= link_to "Employee Sign Out", signout_path, {:style=>'color:gold;', :class => "css_class"} %></li>
+						<%end %>
+							<li><a href="http://localhost:3000" id="goTo">Home</a></li>
+							<li><a href="http://localhost:3000/about" id="goTo">About</a></li>
+							<li><a href="http://localhost:3000/cars" id="goTo">Cars</a></li>
+							<li><a href="http://localhost:3000/garages" id="goTo">Garages</a></li>
+					<% if session[:employee_id] %>
+							<li><a href="http://localhost:3000/rentals" id="goTo">Rentals</a></li>
+							<li><a href="http://localhost:3000/employees" id="goTo">Employees</a></li>
+							<li><a href="http://localhost:3000/customers" id="goTo">Customers</a></li>
+						</ul>
+					<% end %>
+
+				</div>
+					<div id="main">
+						<%= yield %>
+					</div>
+			</div>
+	</body>
+</html>
