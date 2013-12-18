@@ -13,6 +13,13 @@ class ApplicationController < ActionController::Base
 			redirect_to signin_path,:notice => "Please sign in to access page."
 		end
 	end
+	
+	def authoriseCustomer
+		unless signedCustomer_in?
+			store_location
+			redirect_to signinCustomer_path,:notice => "Please sign in to access page."
+		end
+	end
  
 
 end

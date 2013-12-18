@@ -16,12 +16,24 @@ before_filter :authorise, :except => [:index]
   # GET /garages/1.json
   def show
     @garage = Garage.find(params[:id])
+	@garages = Garage.near(@garage.address, 60, :order => :distance, :units => :km)
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @garage }
     end
   end
+  
+  def searchGarage
+		@garages = Garage.paginate(:page => params[:page], :per_page => 5).search params[:q]
+		unless @garages.empty?
+			render 'index'
+		else
+			flash[:notice] = 'No garages mathchs that search'
+			render 'index'# or whatever view is needed
+		end
+	flash[:notice] = nil
+	end
 
   # GET /garages/new
   # GET /garages/new.json

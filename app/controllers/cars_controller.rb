@@ -10,6 +10,17 @@ before_filter :authorise, :except => [:index , :show]
       format.json { render json: @cars }
     end
   end
+  
+  def search
+		@cars = Car.paginate(:page => params[:page], :per_page => 5).search params[:q]
+		unless @cars.empty?
+			render 'index'
+		else
+			flash[:notice] = 'No cars mathchs that search'
+			render 'index'# or whatever view is needed
+		end
+	flash[:notice] = nil
+	end
 
   # GET /cars/1
   # GET /cars/1.json

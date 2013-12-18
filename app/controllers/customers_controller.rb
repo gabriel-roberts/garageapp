@@ -17,12 +17,25 @@ before_filter :authorise, :except => [:show , :create , :new]
   # GET /customers/1.json
   def show
     @customer = Customer.find(params[:id])
+	@garages = Garage.near(@customer.address, 30, :order => :distance, :units => :km)
+
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @customer }
     end
   end
+  
+  def searchCustomer
+		@customers = Customer.paginate(:page => params[:page], :per_page => 5).search params[:q]
+		unless @customers.empty?
+			render 'index'
+		else
+			flash[:notice] = 'No customers mathches that search'
+			render 'index'# or whatever view is needed
+		end
+	flash[:notice] = nil
+	end
 
   # GET /customers/new
   # GET /customers/new.json

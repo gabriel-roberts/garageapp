@@ -1,28 +1,40 @@
 Garageapp::Application.routes.draw do
   resources :posts
 
-  #get "admin/index"
+	#get "admin/index"
 	
-	get "sessions/employee"
+	get "sessions/new"
 
-  get "sessions/create"
+	get "sessions/create"
 
-  get "sessions/destroy"
+	get "sessions/destroy"
+	
+	get "sessions/newCustomer"
 
-  get "pages/home"
+	get "sessions/createCustomer"
 
-  get "pages/about"
-  get "pages/employeeHome"
+	get "sessions/destroyCustomer"
+
+	get "pages/home"
+
+	get "pages/about"
+	get "pages/employeeHome"
+	get "pages/customerHome"
   
-  match '/about' => 'pages#about'
-  match '/home' => 'pages#home'
-  match '/employeeHome' => 'pages#employeeHome'
-
-  resources :customers
+	match '/about' => 'pages#about'
+	match '/home' => 'pages#home'
+	match '/employeeHome' => 'pages#employeeHome'
+	match '/customerHome' => 'pages#customerHome'
+	
+	match '/search' => 'cars#search'
+	match '/searchCustomer' => 'customers#searchCustomer'
+	match '/searchEmployee' => 'employees#searchEmployee'
+	match '/searchGarage' => 'garages#searchGarage'
+	resources :customers
   
-  resources :cars do 
-	resources :posts
-  end
+	resources :cars do 
+		resources :posts
+	end
 
   resources :rentals
 
@@ -32,16 +44,11 @@ Garageapp::Application.routes.draw do
 
   resources :garages
 
-  match '/signin',  :to => 'sessions#employee'
+  match '/signin',  :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
   
-  controller :sessions do
-	get 'login' => :employee
-	post 'login' => :create
-	delete 'logout' => :destroy
-	end
-
-
+  match '/signinCustomer',  :to => 'sessions#newCustomer'
+  match '/signoutCustomer', :to => 'sessions#destroyCustomer'
   resources :sessions
 
   # The priority is based upon order of creation:

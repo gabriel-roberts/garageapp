@@ -8,6 +8,8 @@
 <p>
   <b>Address:</b>
   <%= @garage.address %>
+  
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@garage.latitude}%2C#{@garage.longitude}" %>
 </p>
 
 <p>
@@ -25,29 +27,31 @@
   <%= @garage.manageName %>
 </p>
 
-<p>
-	<b>Employees employeed in the Garage: </b> <br \>
-	<%= "Name           Role"%>
-	<br \>
-	<% @garage.employees.each do |m| %>
-		<%= m.name %>
-		<%= m.role %>
+<% if session[:employee_id] %>
+	<p>
+		<b>Employees employeed in the Garage: </b> <br \>
+		<%= "Name           Role"%>
 		<br \>
-	<% end %>
-</p> 
+		<% @garage.employees.each do |m| %>
+			<%= m.name %>
+			<%= m.role %>
+			<br \>
+		<% end %>
+	</p> 
 
-<p>
-	<b>Cars in the Garage: </b> <br \>
-	<%= "Photo          Make        Model"%>
-	<br \>
-	<% @garage.cars.each do |m| %>
+	<p>
+		<b>Cars in the Garage: </b> <br \>
+		<%= "Photo          Make        Model"%>
 		<br \>
-		<%= image_tag(m.photo, :size => "100x100") %>
-		<%= m.make %>
-		<%= m.model %>
-		<br \>
-	<% end %>
-</p> 
+		<% @garage.cars.each do |m| %>
+			<br \>
+			<%= image_tag(m.photo, :size => "100x100") %>
+			<%= m.make %>
+			<%= m.model %>
+			<br \>
+		<% end %>
+	</p> 
+<% end %>
 
 <%= link_to 'Edit', edit_garage_path(@garage) %> |
 <%= link_to 'Back', garages_path %>

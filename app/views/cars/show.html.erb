@@ -54,6 +54,29 @@
 	<% end %>
 </p>
 
+	<h2>Our employees Comments about the car</h2>
+	<% if session[:employee_id] %>
+		<%= form_for([@car, Post.new], :remote => true) do |f| %>
+			<%= f.text_area :content, :rows => 3 %>
+			<div class="actions">
+				<%= f.submit "post comment"%>
+			</div>
+		<% end %>
+	<% end %>
+	
+	<%if @car.posts.empty? %>
+		<h3>You are the first to comment</h3>
+	<% else %>
+		<h2>What others felt about this car: </h2>
+			<% @car.posts.reverse.each do |post| %>
+				<div id="posts">
+					<p><%= post.content %>
+						Posted <%= time_ago_in_words(post.created_at) %> ago by
+					<%= post.employee.name %></p>
+				</div>
+			<%end%>
+	<%end%>
+
 
 
 <%= link_to 'Edit', edit_car_path(@car) %> |

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h1>Welcome <%= @current_customer.name %></h1>
+		<p>Welcome to the new and improved customer view.</p>
+		<p>Please click the link below to access your customers details</p>
+		<a href="http://localhost:3000/customers" id="goTo">Customers</a>
+		<p>You can also click below to make a rental.</p>
+		<%= link_to "Make new rental!", new_rental_path %>
+		<p>Remember to sign out before you leave to maintain security protocol</p>
+		
+	</body>
+</html>

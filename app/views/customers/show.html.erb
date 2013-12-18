@@ -40,6 +40,14 @@
   <%= @customer.PPSN %>
 </p>
 
+<h3>Nearby Garages</h3>
+<ul>
+<% @garages.each do |garage| %> 
+ <li><%= link_to garage.address, garage %> (<%= garage.distance.round(2) %> km)</li>
+<% end %>
+</ul>
+
+
 <p>
 	<b>List or the Customer's rentals and Costs: </b> <br \>
 	<%= "Reg                 cost"%>

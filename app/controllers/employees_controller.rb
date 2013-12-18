@@ -22,6 +22,17 @@ before_filter :authorise
       format.json { render json: @employee }
     end
   end
+  
+  def searchEmployee
+		@employees = Employee.paginate(:page => params[:page], :per_page => 5).search params[:q]
+		unless @employees.empty?
+			render 'index'
+		else
+			flash[:notice] = 'No employees mathchs that search'
+			render 'index'# or whatever view is needed
+		end
+	flash[:notice] = nil
+	end
 
   # GET /employees/new
   # GET /employees/new.json

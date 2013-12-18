@@ -11,4 +11,9 @@ class Car < ActiveRecord::Base
 	validates :color , presence: true
 	validates :version , presence: true
 	validates :price , presence: true
+	
+	def self.search(search)
+		search_condition ="%" + search + "%"
+		find(:all, :conditions => ['Make LIKE  ?', search_condition])
+	end
 end

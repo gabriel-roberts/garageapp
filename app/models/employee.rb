@@ -2,6 +2,7 @@ class Employee < ActiveRecord::Base
 	after_destroy :ensure_an_admin_remains
 	attr_accessible :name, :password_digest, :password, :password_confirmation, :email, :address, :phone, :experience, :garage_id, :role, :email
 	belongs_to :garage
+	has_many :posts, :dependent => :destroy
 	has_secure_password
 	validates :name , presence: true
 	validates :address , presence: true
@@ -19,4 +20,8 @@ class Employee < ActiveRecord::Base
 		end
 	end
 
+	def self.search(searchEmployee)
+		search_condition ="%" + searchEmployee + "%"
+		find(:all, :conditions => ['Name LIKE  ?', search_condition])
+	end
 end

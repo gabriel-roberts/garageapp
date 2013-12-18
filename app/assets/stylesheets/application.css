@@ -76,6 +76,30 @@
 	h2{
 		color:purple;
 	}
+	
+.field_with_errors {
+display:inline;
+}
+
+.field_with_errors .message{
+color: red;
+padding-left: 5px;
+}
+
+#fillup, #propperAddress, #valid, #info, #confirm  {
+    height: 25px;
+    width: 200px;
+    text-align: center;
+    vertical-align:bottom;
+    background-color: cornflowerblue;
+    color: white;
+    display: none;
+    padding-top: 8px;
+    
+
+    position: absolute;
+}
+
 				
 			
 	

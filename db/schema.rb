@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131206102304) do
+ActiveRecord::Schema.define(:version => 20131218120502) do
 
   create_table "cars", :force => true do |t|
     t.string   "make"
@@ -54,14 +54,15 @@ ActiveRecord::Schema.define(:version => 20131206102304) do
     t.string   "password_digest"
   end
 
-  create_table "garages", :force => true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.boolean  "full"
-    t.integer  "phone"
-    t.string   "manageName"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+# Could not dump table "garages" because of following StandardError
+#   Unknown type 'flote' for column 'latitude'
+
+  create_table "posts", :force => true do |t|
+    t.text     "content"
+    t.integer  "employee_id"
+    t.integer  "car_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "rentals", :force => true do |t|
